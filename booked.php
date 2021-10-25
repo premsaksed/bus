@@ -62,7 +62,7 @@
 							if(Object.keys(resp).length > 0){
 								$('#booked-field tbody').html('')
 								var i = 1 ;
-								var confirm1='ต้องการยกเลิกตั๋ว?';
+								
 								Object.keys(resp).map(k=>{
 									var tr = $('<tr></tr>');
 									tr.append('<td class="text-center">'+(i++)+'</td>')
