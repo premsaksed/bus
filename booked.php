@@ -26,6 +26,7 @@
 									<th class="text-center">จำนวนคน</th>
 									<th class="text-center">จำนวน</th>
 									<th class="text-center">สถานะ</th>
+									<th class="text-center">ยกเลิกตั๋ว</th>
 									<th class="text-center">แก้ไข</th>
 								</tr>
 							</thead>
@@ -61,6 +62,7 @@
 							if(Object.keys(resp).length > 0){
 								$('#booked-field tbody').html('')
 								var i = 1 ;
+								var confirm1='ต้องการยกเลิกตั๋ว?';
 								Object.keys(resp).map(k=>{
 									var tr = $('<tr></tr>');
 									tr.append('<td class="text-center">'+(i++)+'</td>')
@@ -68,9 +70,9 @@
 									tr.append('<td class="">'+resp[k].name+'</td>')
 									tr.append('<td class="">'+resp[k].qty+'</td>')
 									tr.append('<td class="">'+resp[k].amount+'</td>')
-									tr.append('<td class="">'+(resp[k].status == 1 ? 'Paid' :'Unpaid')+'</td>')
-									
-										tr.append('<td><center><button class="btn btn-sm btn-primary mr-2 text-white edit_booked" data-id="'+resp[k].schedule_id+'" data-bid="'+resp[k].id+'"><strong>Edit</strong></button></center></td>')
+									tr.append('<td class="">'+(resp[k].status == 1 ? 'จ่ายแล้ว' :'ยังไม่จ่าย')+'</td>')
+									tr.append('<td class=""> <center> <a  href="delete.php?id='+resp[k].id+'"><button class="btn btn-sm btn-danger"> ยกเลิกตั๋ว</button></a></td>')
+									tr.append('<td><center><button class="btn btn-sm btn-primary mr-2 text-white edit_booked" data-id="'+resp[k].schedule_id+'" data-bid="'+resp[k].id+'"><strong>Edit</strong></button></center></td>')
 									$('#booked-field tbody').append(tr)
 
 								})
@@ -94,3 +96,4 @@
 		load_booked()
 	})
 </script>
+
